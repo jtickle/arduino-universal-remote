@@ -1,0 +1,19 @@
+This is an infrared universal remote for your ATMEGA 328p device.
+
+In addition to an Arduino, you will also need...
+
+https://www.adafruit.com/product/1770 (SPI only)
+(other displays may work but have not been tested)
+https://www.adafruit.com/product/387
+A 2N2222 NPN transistor
+A 460 ohm resistor
+
+Pin settings are found in ur_config.h
+
+Solder closed the M1, M2, and M3 jumpers on the back of the display
+to put it in SPI mode.  Alternatively, connect 5v digital pins to M1, M2,
+and M3 on the SPI side of the device, and set them to output high in setup().
+
+You will also need to copy the BMP files from sd-images/ to a
+FAT16/32-formatted micro-SD card, and put that card in the display's
+micro-SD slot BEFORE powering it on.
