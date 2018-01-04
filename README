@@ -20,7 +20,8 @@ https://www.adafruit.com/product/387
 A 2N2222 transistor
 A 460 ohm resistor
 
-Pin settings are found in ur_config.h
+Pin settings are found in ur_config.h.  I need to draw a proper schematic,
+but pictures of my dev board are in hardware-images/.
 
 Solder closed the M1, M2, and M3 jumpers on the back of the display
 to put it in SPI mode.  Alternatively, connect 5v digital pins to M1, M2,
