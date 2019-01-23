@@ -9,6 +9,7 @@
 #include "ur_config.h"
 #include "ur_model.h"
 
+// LG TV
 const Command commands[] PROGMEM = {
   {2, {0, 0}},
   {2, {1, 1}},

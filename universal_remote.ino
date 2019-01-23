@@ -5,17 +5,17 @@
 
 #include <IRLibSendBase.h>
 #include <IRLib_P01_NEC.h>
-#include <IRLib_P02_Sony.h>
-#include <IRLib_P03_RC5.h>
-#include <IRLib_P04_RC6.h>
-#include <IRLib_P05_Panasonic_Old.h>
-#include <IRLib_P06_JVC.h>
-#include <IRLib_P07_NECx.h>
+//#include <IRLib_P02_Sony.h>
+//#include <IRLib_P03_RC5.h>
+//#include <IRLib_P04_RC6.h>
+//#include <IRLib_P05_Panasonic_Old.h>
+//#include <IRLib_P06_JVC.h>
+//#include <IRLib_P07_NECx.h>
 #include <IRLib_P08_Samsung36.h>
-#include <IRLib_P09_GICable.h>
-#include <IRLib_P10_DirecTV.h>
-#include <IRLib_P11_RCMM.h>
-#include <IRLib_P12_CYKM.h>
+//#include <IRLib_P09_GICable.h>
+//#include <IRLib_P10_DirecTV.h>
+//#include <IRLib_P11_RCMM.h>
+//#include <IRLib_P12_CYKM.h>
 #include <IRLibCombo.h>
 
 URData ur_data;
@@ -25,6 +25,7 @@ int16_t last_x = 0;
 int16_t last_y = 0;
 
 void irsend(CmdIRSend c) {
+  #ifdef DEBUG
   Serial.print(F("IRSend "));
   Serial.print(c.protocol);
   Serial.print(F(" "));
@@ -33,16 +34,19 @@ void irsend(CmdIRSend c) {
   Serial.print(c.data2, HEX);
   Serial.print(F(" "));
   Serial.println(c.khz);
+  #endif //DEBUG
   
   IRsend ur_sender;
   ur_sender.send(c.protocol, c.data, c.data2, c.khz);
 }
 
 void showpage(CmdShowPage c) {
+  #ifdef DEBUG
   Serial.print(F("ShowPage "));
   Serial.print(c.slot);
   Serial.print(F(" "));
   Serial.print(c.page);
+  #endif //DEBUG
   
   Page p;
   URDisplay ur_display;
@@ -57,17 +61,23 @@ void showpage(CmdShowPage c) {
 void process_commands() {
   Command c;
 
+  #ifdef DEBUG
   if(!ur_data.has_next_command()) {
     Serial.println(F("No Commands"));
     return;
   } else {
     Serial.println(F("Processing Commands"));
   }
+  #endif //DEBUG
   
   while(ur_data.has_next_command()) {
     ur_data.next_command(&c);
+
+    #ifdef DEBUG
     Serial.print(c.command_id);
     Serial.print(F(" "));
+    #endif //DEBUG
+    
     switch(c.command_id) {
       case 1:
         irsend(c.irsend);
@@ -76,7 +86,10 @@ void process_commands() {
         showpage(c.showpage);
         break;
     }
+
+    #ifdef DEBUG
     Serial.println(F(""));
+    #endif //DEBUG
   }
 }
 
@@ -115,12 +128,16 @@ void handle_touch_up(int16_t x, int16_t y) {
 }
 
 void setup() {
+  #ifdef DEBUG
   Serial.begin(9600);
   Serial.println(F("Starting Up..."));
+  #endif //DEBUG
   
   ur_data.init(SD_CS);
 
+  #ifdef DEBUG
   Serial.println(F("SD Loaded"));
+  #endif //DEBUG
 
   URDisplay ur_display;
   ur_display.clear();
@@ -155,10 +172,12 @@ void loop() {
   if(is_touching && !was_touching) {
     was_touching = true;  
 
+    #ifdef DEBUG
     Serial.print(F("Touch Down "));
     Serial.print(x);
     Serial.print(F(" "));
     Serial.println(y);
+    #endif //DEBUG
 
     handle_touch_down(x, y);
 
@@ -167,10 +186,12 @@ void loop() {
   } else if(!is_touching && was_touching) {
     was_touching = false;
 
+    #ifdef DEBUG
     Serial.print(F("Touch Up "));
     Serial.print(last_x);
     Serial.print(F(" "));
     Serial.println(last_y);
+    #endif //DEBUG
 
     handle_touch_up(last_x, last_y);
   }

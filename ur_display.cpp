@@ -55,7 +55,7 @@ void URDisplay::bmpDraw(const char *filename, int16_t x, int16_t y,
   Serial.println('\'');
 
   // Open requested file on SD card
-  if ((bmpFile = SD.open(filename)) == NULL) {
+  if ((bmpFile = SD.open(filename)) == 0) {
     Serial.print(F("File not found"));
     return;
   }

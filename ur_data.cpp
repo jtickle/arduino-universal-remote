@@ -5,7 +5,10 @@ URData::URData() {
 
 bool URData::init(int8_t sd_pin) {
     if(!SD.begin(sd_pin)) {
+      #ifdef DEBUG
       Serial.println(F("Init Failure: SD Card"));
+      #endif //DEBUG
+      
       return false;
     }
     
@@ -17,10 +20,14 @@ void URData::load_initcmds() {
 }
 
 void URData::load_commands(uint8_t start, uint8_t count) {
+  
+  #ifdef DEBUG
   Serial.print("Loading Commands ");
   Serial.print(start);
   Serial.print(" ");
   Serial.println(count);
+  #endif //DEBUG
+  
   _cur_cmd = start;
   _max_cmd = start + count;
 }
@@ -58,4 +65,3 @@ bool URData::get_hitbox(HitBox *hitbox, Page *page, int16_t x, int16_t y) {
   }
   return false;
 }
-

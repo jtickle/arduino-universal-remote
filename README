@@ -30,3 +30,13 @@ and M3 on the SPI side of the device, and set them to output high in setup().
 You will also need to copy the BMP files from sd-images/ to a
 FAT16/32-formatted micro-SD card, and put that card in the display's
 micro-SD slot BEFORE powering it on.
+
+For developing and debugging, uncomment the DEBUG define in ur_config.h.
+
+With DEBUG:
+> Sketch uses 28348 bytes (92%) of program storage space. Maximum is 30720 bytes.
+> Global variables use 1224 bytes (59%) of dynamic memory, leaving 824 bytes for local variables. Maximum is 2048 bytes.
+Without DEBUG:
+> Sketch uses 27792 bytes (90%) of program storage space. Maximum is 30720 bytes.
+> Global variables use 1224 bytes (59%) of dynamic memory, leaving 824 bytes for local variables. Maximum is 2048 bytes.
+
