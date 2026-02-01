@@ -31,6 +31,8 @@ void URDisplay::showPart(const char* filename, int16_t ox, int16_t oy,
 
 #define BUFFPIXEL 24
 
+/* The following code is from Adafruit and I do not claim it.
+ * I made small modifications. */
 void URDisplay::bmpDraw(const char *filename, int16_t x, int16_t y,
                  int16_t ax, int16_t ay, int16_t bx, int16_t by) {
 

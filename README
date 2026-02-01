@@ -40,3 +40,22 @@ Without DEBUG:
 > Sketch uses 27792 bytes (90%) of program storage space. Maximum is 30720 bytes.
 > Global variables use 1224 bytes (59%) of dynamic memory, leaving 824 bytes for local variables. Maximum is 2048 bytes.
 
+License -
+
+All of my code is licensed GNU GPL v3 (see COPYING).
+
+I may have used some examples from online or Adafruit; those are noted and
+I do not claim copyright on those portions.
+
+OpenSCAD Drawings -
+
+See the BOTTOM of each source file for some options for rendering. Note
+that they are designed such that you can show or hide the components.
+Showing the components is useful for the design, but they should
+absolutely be hidden for printing. In later revisions, you can also make
+adjustments to the spacing of the "exploded" view and which individual
+pieces to expose, and by R6 I am rather proud of the system I came up
+with for prototyping 3D prints in this way.
+
+I still don't even own a 3D printer but one day I will and will do
+this type of design again.
