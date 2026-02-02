@@ -43,6 +43,10 @@ Without DEBUG:
 License -
 
 All of my code is licensed GNU GPL v3 (see COPYING).
+That includes the OpenSCAD stuff.
+
+Non-code resources (the images) are CC BY-SA 4.0
+https://creativecommons.org/licenses/by-sa/4.0/
 
 I may have used some examples from online or Adafruit; those are noted and
 I do not claim copyright on those portions.
